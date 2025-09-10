@@ -11,17 +11,25 @@ menu = {
 }
 
 
-def get_order(items):
-    check_item = input("Item: ")
-
-    if check_item in menu:
-        print(check_item)
+def get_order(item):
+       while True:
+        try:
+            item_ordered = item.title()
+            if item_ordered in menu:
+                price = float(menu[item_ordered])
+                total = price
+                print(total)
+        except EOFError:
+            return item
 
 
 
 def main():
-    total_cost = get_order()
-    print("Total:", total_cost)
+    total = get_order(input("Item: "))
+    print(total)
+# need to figure out prompt and how to repeat asking + update price
+
+
 
 if __name__ == "__main__":
     main()
